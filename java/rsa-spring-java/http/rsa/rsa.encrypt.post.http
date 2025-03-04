@@ -1,0 +1,8 @@
+### RSA 키 생성 요청
+POST http://localhost:8080/rsa/encrypt
+Content-Type: application/json
+
+{
+  "data" : "rsa 암호화 테스트 중입니다",
+  "publicKey" : "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhjN98gKuykPFHtdpWkiM+3pJJzAZiblFKb0hnC9/U46DV6wVHuyOXDnIk12XL9xM6AKFMbHwDEgi5tm3OnAsxzWBC6uREm2Xa4xxAxVwir4V7ssitcUHGT156DK910CrMLpvBTLaVtu12f/jc+t4tkDhEotxoFbicaMpFZGM3KXQBGwwpoVAGwKM5kVk5aw1YqMrFQGwk/JRMBVhKwF/NNtIg2tcdh5I2JYNsaJJw4RETjYTq918OhwwaCofhhixsLN6eFiA7VwlL29Fo6ewmYliW85Pr3L1tzr4yq4+VLoaHkh1wpZVcTszOQzlGhKwKNvE02dl2dUzCUdT7pV6fwIDAQAB"
+}
