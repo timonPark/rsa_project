@@ -119,19 +119,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/2309-n0018/.nuget/packages/": {}
+    "/Users/chris/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/2309-n0018/Project/rsa_csharp/RsaApi/RsaApi.csproj",
+      "projectUniqueName": "/Users/chris/Project/rsa_project/c#/RsaApi/RsaApi.csproj",
       "projectName": "RsaApi",
-      "projectPath": "/Users/2309-n0018/Project/rsa_csharp/RsaApi/RsaApi.csproj",
-      "packagesPath": "/Users/2309-n0018/.nuget/packages/",
-      "outputPath": "/Users/2309-n0018/Project/rsa_csharp/RsaApi/obj/",
+      "projectPath": "/Users/chris/Project/rsa_project/c#/RsaApi/RsaApi.csproj",
+      "packagesPath": "/Users/chris/.nuget/packages/",
+      "outputPath": "/Users/chris/Project/rsa_project/c#/RsaApi/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/2309-n0018/.nuget/NuGet/NuGet.Config"
+        "/Users/chris/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"

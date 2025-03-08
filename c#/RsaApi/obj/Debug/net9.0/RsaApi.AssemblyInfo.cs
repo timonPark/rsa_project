@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RsaApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+590f340c05dd161884b8354ed3bd74cfb36ed197")]
 [assembly: System.Reflection.AssemblyProductAttribute("RsaApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RsaApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
