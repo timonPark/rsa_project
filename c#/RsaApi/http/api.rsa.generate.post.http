@@ -1,0 +1,4 @@
+@RsaApi_HostAddress = http://localhost:5186/api/rsa/generate
+
+POST {{RsaApi_HostAddress}}
+Accept: application/json

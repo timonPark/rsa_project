@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "ue5MQCZ9guL7czMsBmmXJ4F8cUCuo1qJRIw1XCLs8mY=",
+  "Source": "RsaApi",
+  "BasePath": "_content/RsaApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
