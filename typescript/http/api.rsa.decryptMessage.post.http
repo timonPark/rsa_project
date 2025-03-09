@@ -1,0 +1,9 @@
+@RsaApi_HostAddress = http://localhost:3000/rsa/decryptMessage
+
+POST {{RsaApi_HostAddress}}
+Accept: application/json
+Content-Type: application/json
+
+{
+  "decryptMessage": "gGKSgH+O0HfdPDfLwa+ccfC7/U8xTFeNzw742b2OToQQLUOHeEL8QeY6V5KRk8kSIZzwgMpdGXqBBBVjE+Bdxe1QFEs94YDvQxw3+p+M+XFMzISfpgWNEPqnrBxrkczkW5bj0+izB3oOQQUcil8JG4MD0ZslaYACIOpRkwAInek0y1sDyI6OjZzxmxn1dT0Nr09PaSq1wmPr83prXemf+o8y9YFt3OApvkoXhIMOYPRB/o61dsNCcMiRrJMKtz2hyvUSOOlC+zAQVCtLIvfrDSy7AwEtrPLvwUpoQzUM84mmff5qlIMtoSkIkxsix3LZmKkhNCTh9NZRRSIDJeRscg=="
+}
