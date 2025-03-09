@@ -5,6 +5,7 @@ import java.security.NoSuchProviderException;
 import lombok.RequiredArgsConstructor;
 import me.park.chatting.rsaspringjava.common.ApiResponse;
 import me.park.chatting.rsaspringjava.rsa.dto.DecryptRequestDto;
+import me.park.chatting.rsaspringjava.rsa.dto.EmrUserDto;
 import me.park.chatting.rsaspringjava.rsa.dto.EncryptRequestDto;
 import me.park.chatting.rsaspringjava.rsa.dto.RsaGenerateKeyRequestDto;
 import me.park.chatting.rsaspringjava.rsa.service.RsaService;
@@ -37,7 +38,7 @@ public class RsaController {
 
   // 개인키로 복호화
   @PostMapping("/decrypt")
-  public ApiResponse<String> decryptData(@RequestBody DecryptRequestDto requestDto) throws Exception {
-    return new ApiResponse<String>(HttpStatus.OK, "decrypt successful", rsaService.decryptWithPrivateKey(requestDto.getData(), requestDto.getPrivateKey()));
+  public ApiResponse<EmrUserDto> decryptData(@RequestBody DecryptRequestDto requestDto) throws Exception {
+    return new ApiResponse<EmrUserDto>(HttpStatus.OK, "decrypt successful", rsaService.decryptWithPrivateKey(requestDto.getData(), requestDto.getPrivateKey()));
   }
 }

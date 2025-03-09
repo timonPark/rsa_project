@@ -1,5 +1,7 @@
 package me.park.chatting.rsaspringjava.rsa.service;
 
+import com.google.gson.Gson;
+import java.io.FileReader;
 import java.security.KeyFactory;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
@@ -14,8 +16,12 @@ import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 import javax.crypto.Cipher;
+import me.park.chatting.rsaspringjava.rsa.dto.EmrUserDto;
 import me.park.chatting.rsaspringjava.rsa.dto.RsaGenerateKeyRequestDto;
+import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.bouncycastle.openssl.PEMKeyPair;
+import org.bouncycastle.openssl.PEMParser;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -58,20 +64,49 @@ public class RsaService {
     return Base64.getEncoder().encodeToString(encryptedData);
   }
 
-  public String decryptWithPrivateKey(String encryptedData, String base64PrivateKey) throws Exception {
-    // Base64로 인코딩된 개인키 문자열을 디코딩하여 PrivateKey 객체로 변환
-    byte[] decodedPrivateKey = Base64.getDecoder().decode(base64PrivateKey);
-    PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(decodedPrivateKey);
-    KeyFactory keyFactory = KeyFactory.getInstance("RSA");
-    PrivateKey privateKey = keyFactory.generatePrivate(keySpec);
+  public EmrUserDto decryptWithPrivateKey(String encryptedData, String base64PrivateKey) throws Exception {
+
+    // BouncyCastle을 보안 프로바이더로 등록
+    Security.addProvider(new BouncyCastleProvider());
+
+    // pem 파일로 읽어서 받는 경우
+//    String privateKeyPath = ".ssh/private_key.pem"; // 파일 경로 설정
+//    PrivateKey privateKey = readPrivateKeyFromPEM(privateKeyPath);
+
+    // base64PrivateKey로 받는 경우
+    PrivateKey privateKey = readPrivateKeyFromBase64(base64PrivateKey);
 
     // RSA 복호화
-    Cipher cipher = Cipher.getInstance("RSA");
+    Cipher cipher = Cipher.getInstance("RSA/ECB/OAEPWithSHA-1AndMGF1Padding");
     cipher.init(Cipher.DECRYPT_MODE, privateKey);
 
     byte[] encryptedBytes = Base64.getDecoder().decode(encryptedData);
     byte[] decryptedData = cipher.doFinal(encryptedBytes);
 
-    return new String(decryptedData);
+
+    Gson gson = new Gson();
+    return gson.fromJson(new String(decryptedData), EmrUserDto.class);
+  }
+
+  private PrivateKey readPrivateKeyFromPEM(String filePath) throws Exception {
+    try (PEMParser pemParser = new PEMParser(new FileReader(filePath))) {
+      Object object = pemParser.readObject();
+      System.out.println(object);
+      PEMKeyPair pemKeyPair = (PEMKeyPair) object;
+      KeyFactory keyFactory = KeyFactory.getInstance("RSA", "BC");
+      PrivateKeyInfo privateKeyInfo =pemKeyPair.getPrivateKeyInfo();
+      return keyFactory.generatePrivate(new java.security.spec.PKCS8EncodedKeySpec(privateKeyInfo.getEncoded()));
+    }
+  }
+
+  private PrivateKey readPrivateKeyFromBase64(String base64PrivateKey) throws Exception {
+    // Base64로 인코딩된 private_key 문자열을 디코딩하여 byte[]로 변환
+    byte[] decodedKey = Base64.getDecoder().decode(base64PrivateKey);
+
+    // KeyFactory를 사용하여 PrivateKey 객체 생성 (Bouncy Castle을 사용하려면 "BC"를 명시적으로 설정)
+    KeyFactory keyFactory = KeyFactory.getInstance("RSA", "BC");
+    PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(decodedKey);
+
+    return keyFactory.generatePrivate(keySpec);
   }
 }

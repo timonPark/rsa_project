@@ -1,5 +1,3 @@
 ### RSA 키 생성 요청
 POST http://localhost:8080/rsa/generate
 Content-Type: application/json
-
-{}
