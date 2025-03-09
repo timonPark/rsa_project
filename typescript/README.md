@@ -16,6 +16,12 @@ $ pnpm install
 $ pnpm start:dev
 ```
 
+## 복호화에 사용할 privateKey 세팅
+[privateKey.pem 보기](https://locrian-gerbil-117.notion.site/RSA-1a7fafab7c928001ab23d096620b2adb)
+- 해당 사이트에 보면 테스트용 publicKey.pem과 privateKey.pem을 볼 수 있습니다.
+- private_key.pem을 복사한 후 typescript 하위에 .ssh라는 폴더를 만들고 private_key.pem이라는 파일을 생성합니다.
+- 그리고 복사한 내용을 해당 파일에 붙여 넣습니다.
+
 ## API
 - 해당 api는 http 폴더 아래 존재함, 해당 파일 실행하면 됩니다.
 ### generate
